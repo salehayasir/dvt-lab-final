@@ -1,18 +1,33 @@
 :root {
-  /* Backgrounds */
-    --bg-color: #FFF8F2;          /* warm cream background */
-    --card-bg: #FFFFFF;
+/* =======================
+   Background (dark for contrast + vibrancy)
+======================= */
+--bg-color: #0b0f1a;        /* deep navy-black */
+--card-bg: #111827;        /* elevated dark cards */
 
-    /* Text */
-    --text-main: #C45F3F;         /* Tomato Jam */
-    --text-muted: #8F9450;        /* Monet Ponds */
+/* =======================
+   Text (clean + crisp)
+======================= */
+--text-main: #f9fafb;      /* bright white */
+--text-muted: #a5b4fc;     /* soft bluish lavender */
 
-    /* Accent */
-    --accent-color: #008471;      /* Tropical Rain */
+/* =======================
+   Accent Colors (main identity)
+======================= */
+--accent-color: #00e5ff;   /* electric cyan */
+--accent-secondary: #ff4ecd; /* neon pink */
+--accent-tertiary: #7c3aed;  /* vibrant purple */
 
-    /* Borders & Effects */
-    --border-color: #F2C9C3;      /* Peony Bundle */
-    --shadow: 0 6px 16px rgba(137, 142, 70, 0.12);
+/* =======================
+   Borders (subtle glow effect)
+======================= */
+--border-color: rgba(0, 229, 255, 0.15);
+
+/* =======================
+   Shadows (glow-based depth)
+======================= */
+--shadow: 0 0 25px rgba(0, 229, 255, 0.15);
+
 
 * {
     margin: 0;
