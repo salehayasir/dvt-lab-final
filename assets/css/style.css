@@ -1,12 +1,18 @@
 :root {
-    --bg-color: #f4f7fb;
-    --card-bg: #ffffff;
-    --text-main: #2d3748;
-    --text-muted: #718096;
-    --accent-color: #4299e1;
-    --border-color: #e2e8f0;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+  /* Backgrounds */
+    --bg-color: #FFF8F2;          /* warm cream background */
+    --card-bg: #FFFFFF;
+
+    /* Text */
+    --text-main: #C45F3F;         /* Tomato Jam */
+    --text-muted: #8F9450;        /* Monet Ponds */
+
+    /* Accent */
+    --accent-color: #008471;      /* Tropical Rain */
+
+    /* Borders & Effects */
+    --border-color: #F2C9C3;      /* Peony Bundle */
+    --shadow: 0 6px 16px rgba(137, 142, 70, 0.12);
 
 * {
     margin: 0;
