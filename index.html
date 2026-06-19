@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Ecosystem Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>🚀 Startup Ecosystem Dashboard</h1>
+            <p>Data Visualization Techniques - Semester Project</p>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- KPI Cards -->
+        <section class="kpi-row">
+            <div class="kpi-card">
+                <h3>Total Startups</h3>
+                <h2 id="kpi-total">-</h2>
+            </div>
+            <div class="kpi-card">
+                <h3>Total Funding (M USD)</h3>
+                <h2 id="kpi-funding">-</h2>
+            </div>
+            <div class="kpi-card">
+                <h3>Avg Valuation (M USD)</h3>
+                <h2 id="kpi-valuation">-</h2>
+            </div>
+            <div class="kpi-card">
+                <h3>Profitable Startups</h3>
+                <h2 id="kpi-profitable">-</h2>
+            </div>
+        </section>
+
+        <!-- Visualization Grid (3-column responsive) -->
+        <section class="charts-grid">
+            <!-- 1. Scatter Plot -->
+            <div class="chart-container grid-large">
+                <div class="chart-header">
+                    <h2>Funding vs. Valuation</h2>
+                    <p>Size reflects employee count. Color indicates industry.</p>
+                </div>
+                <div id="scatter-plot" class="chart"></div>
+            </div>
+
+            <!-- 2. Bar Chart -->
+            <div class="chart-container grid-medium">
+                <div class="chart-header">
+                    <h2>Startups by Industry</h2>
+                    <p>Click bars to cross-filter other charts.</p>
+                </div>
+                <div id="bar-chart" class="chart"></div>
+            </div>
+
+            <!-- 3. Revenue vs Employees Scatter -->
+            <div class="chart-container grid-medium">
+                <div class="chart-header">
+                    <h2>Revenue vs Employees</h2>
+                    <p>Operational scale vs financial performance.</p>
+                </div>
+                <div id="revenue-scatter" class="chart"></div>
+            </div>
+
+            <!-- 4. Line Chart -->
+            <div class="chart-container grid-large">
+                <div class="chart-header">
+                    <h2>Startups Founded Over Time</h2>
+                    <p>Brush over the timeline to filter data by year.</p>
+                </div>
+                <div id="line-chart" class="chart"></div>
+            </div>
+
+            <!-- 5. Exit Status -->
+            <div class="chart-container grid-medium">
+                <div class="chart-header">
+                    <h2>Exit Status Distribution</h2>
+                    <p>Private vs Acquired startups.</p>
+                </div>
+                <div id="exit-status" class="chart"></div>
+            </div>
+
+            <!-- 6. Region Donut -->
+            <div class="chart-container grid-medium">
+                <div class="chart-header">
+                    <h2>Distribution by Region</h2>
+                    <p>Geographical breakdown of headquarters.</p>
+                </div>
+                <div id="donut-chart" class="chart"></div>
+            </div>
+
+            <!-- 7. Profitability -->
+            <div class="chart-container grid-large">
+                <div class="chart-header">
+                    <h2>Profitability by Industry</h2>
+                    <p>Profitable vs non-profitable startups per industry.</p>
+                </div>
+                <div id="profitability-chart" class="chart"></div>
+            </div>
+
+            <!-- 8. Funding Rounds -->
+            <div class="chart-container grid-medium">
+                <div class="chart-header">
+                    <h2>Funding Rounds Distribution</h2>
+                    <p>How many rounds of funding did startups receive?</p>
+                </div>
+                <div id="funding-rounds" class="chart"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Tooltip Element -->
+    <div id="tooltip" class="tooltip hidden"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/utils/preprocess.js"></script>
+    <script src="assets/js/charts/scatterPlot.js"></script>
+    <script src="assets/js/charts/barChart.js"></script>
+    <script src="assets/js/charts/lineChart.js"></script>
+    <script src="assets/js/charts/donutChart.js"></script>
+    <script src="assets/js/charts/revenueScatter.js"></script>
+    <script src="assets/js/charts/exitStatusChart.js"></script>
+    <script src="assets/js/charts/profitabilityChart.js"></script>
+    <script src="assets/js/charts/fundingRoundsChart.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
