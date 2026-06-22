@@ -177,6 +177,7 @@ header {
 .tooltip {
     position: absolute;
     text-align: left;
+    color: black;
     padding: 10px;
     font-size: 12px;
     background: rgba(255, 255, 255, 0.95);
