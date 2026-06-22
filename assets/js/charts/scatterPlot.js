@@ -11,8 +11,8 @@ class ScatterPlot {
         this.data = data;
         this.onFilter = onFilter;
 
-        this.margin = { top: 20, right: 180, bottom: 50, left: 60 }; 
-        // extra right margin for legends
+        // Extra right margin for legends
+        this.margin = { top: 20, right: 180, bottom: 50, left: 60 };
 
         this.container = document.querySelector(selector);
 
@@ -72,9 +72,9 @@ class ScatterPlot {
     drawLegends() {
         const legendX = this.width + 20;
 
-        // -----------------------
-        // Industry Legend
-        // -----------------------
+        // =======================
+        // INDUSTRY LEGEND
+        // =======================
         const legend = this.svg.append("g")
             .attr("transform", `translate(${legendX}, 20)`);
 
@@ -84,6 +84,7 @@ class ScatterPlot {
             .text("Industry");
 
         this.colorScale.domain().forEach((industry, i) => {
+
             const row = legend.append("g")
                 .attr("transform", `translate(0, ${i * 20})`);
 
@@ -99,9 +100,9 @@ class ScatterPlot {
                 .text(industry);
         });
 
-        // -----------------------
-        // Bubble Size Legend
-        // -----------------------
+        // =======================
+        // EMPLOYEES LEGEND (FIXED)
+        // =======================
         const sizeLegend = this.svg.append("g")
             .attr("transform", `translate(${legendX}, 260)`);
 
@@ -113,19 +114,23 @@ class ScatterPlot {
         const sizeValues = [100, 500, 1000];
 
         sizeValues.forEach((value, i) => {
-            const r = this.rScale(value);
 
-            sizeLegend.append("circle")
-                .attr("cx", 20)
-                .attr("cy", i * 50)
-                .attr("r", r)
+            const row = sizeLegend.append("g")
+                .attr("transform", `translate(0, ${i * 22})`);
+
+            // simple clean indicator bar
+            row.append("rect")
+                .attr("width", 14)
+                .attr("height", 6)
+                .attr("y", -5)
                 .attr("fill", "#999")
-                .attr("opacity", 0.5);
+                .attr("opacity", 0.6);
 
-            sizeLegend.append("text")
-                .attr("x", 50)
-                .attr("y", i * 50 + 5)
-                .style("font-size", "11px")
+            // label
+            row.append("text")
+                .attr("x", 25)
+                .attr("y", 0)
+                .style("font-size", "12px")
                 .text(`${value} employees`);
         });
     }
@@ -133,24 +138,29 @@ class ScatterPlot {
     update(newData) {
         this.data = newData;
 
+        // Update scales
         this.xScale.domain([0, d3.max(this.data, d => d.fundingAmount) * 1.05]);
         this.yScale.domain([0, d3.max(this.data, d => d.valuation) * 1.05]);
         this.rScale.domain([0, d3.max(this.originalData, d => d.employees)]);
 
+        // Axes update
         this.xAxisGroup.transition().duration(750)
             .call(d3.axisBottom(this.xScale));
 
         this.yAxisGroup.transition().duration(750)
             .call(d3.axisLeft(this.yScale));
 
+        // Data join
         const circles = this.svg.selectAll("circle.data-point")
             .data(this.data, d => d.name);
 
+        // EXIT
         circles.exit()
             .transition().duration(500)
             .attr("r", 0)
             .remove();
 
+        // ENTER
         const circlesEnter = circles.enter()
             .append("circle")
             .attr("class", "data-point")
@@ -162,6 +172,7 @@ class ScatterPlot {
             .attr("stroke", "#fff")
             .attr("stroke-width", 1);
 
+        // ENTER + UPDATE
         circlesEnter.merge(circles)
             .on("mouseover", (event, d) => {
                 d3.select(event.currentTarget)
